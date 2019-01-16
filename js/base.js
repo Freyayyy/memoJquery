@@ -380,7 +380,8 @@
 
 	// 渲染一条task模板
 	function renderTaskItem(data, index){
-		if(!data || !index) return; 
+		//使用（!index）会过滤index为0的情况，导致添加的第一条task无法渲染，遂改为（index === undefined）
+		if(!data || index === undefined) return; 
         var list_item_tpl = 
 	    '<div class="task-item" data-index="'+ index +'">'+
 			'<span><input class="complete" '+(data.complete ?'checked' : '')+' type="checkbox"></span>'+
